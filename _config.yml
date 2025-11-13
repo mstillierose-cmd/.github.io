@@ -63,5 +63,3 @@ collections:
     output: true
   portfolio:
     output: true
-
-theme: jekyll-theme-minimal
