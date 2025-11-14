@@ -1,0 +1,23 @@
+name: Check Links
+
+# Trigger on pull requests and pushes to main branch
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout the repository
+      - uses: actions/checkout@v3
+
+      # Step 2: Install linkchecker
+      - name: Install Linkchecker
+        run: sudo apt-get update && sudo apt-get install -y linkchecker
+
+      # Step 3: Run linkchecker on the site
+      - name: Check for broken links
+        run: linkchecker ./_site --ignore-url=example.com
